@@ -24,7 +24,7 @@ Abra um terminal e execute o seguinte comando:
 
 mkdir BookStore && cd BookStore
 ```
-git clone https://github.com/JoaoVictorWebDev/GrupoCNArchive.git
+git clone https://github.com/JoaoVictorWebDev/GrupoCNArchive.git](https://github.com/JoaoVictorWebDev/BookStore.git
 ```
 📂 Abrindo o Projeto
 
