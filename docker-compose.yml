@@ -1,0 +1,22 @@
+services:
+  bookstore.api:
+    image: ${DOCKER_REGISTRY-}bookstoreapi
+    build:
+      context: .
+      dockerfile: Application.BookStore/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+  
+  bookstore.database:
+    image: postgres:latest
+    container_name: bookstore.data
+    environment:
+      - POSTGRES_DB=bookstore
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/bookstore-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
