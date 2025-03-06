@@ -2,9 +2,9 @@ BookStore - Desafio Técnico
 
 Este projeto é uma API para gerenciamento de livros, desenvolvida com ASP.NET Core 8 e PostgreSQL. O sistema utiliza Docker para facilitar a configuração do banco de dados e implementa AutoMapper para mapeamento de objetos.
 
-Configuração do Ambiente
+📌 Configuração do Ambiente
 
--Requisitos
+Requisitos
 
 Antes de iniciar a instalação e configuração do projeto, certifique-se de ter os seguintes requisitos atendidos:
 
@@ -18,14 +18,15 @@ PostgreSQL
 
 Git
 
-1. Clonando o Repositório
+🚀 Clonando o Repositório
 
 Abra um terminal e execute o seguinte comando:
 
 mkdir BookStore && cd BookStore
+
 git clone https://github.com/JoaoVictorWebDev/GrupoCNArchive.git
 
-2. Abrindo o Projeto
+📂 Abrindo o Projeto
 
 Abra o Visual Studio 2022.
 
@@ -33,7 +34,7 @@ Vá para Arquivo → Abrir → Projeto/Solução.
 
 Selecione o diretório onde o projeto foi clonado.
 
-3. Instalando Dependências
+📦 Instalando Dependências
 
 No Gerenciador de Pacotes NuGet, instale os seguintes pacotes conforme a estrutura do projeto:
 
@@ -42,7 +43,7 @@ BookStore.API
 Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 11.0.0
 Install-Package Microsoft.EntityFrameworkCore.Tools -Version 9.0.2
 
- BookStore.Application
+BookStore.Application
 
 Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 11.0.0
 Install-Package Microsoft.AspNetCore.Authentication.JwtBearer -Version 8.0.0
@@ -55,9 +56,9 @@ Install-Package Npgsql.EntityFrameworkCore.PostgreSQL -Version 9.0.3
 Install-Package System.Configuration.ConfigurationManager -Version 9.0.2
 Install-Package X.PagedList.Mvc -Version 8.0.7
 
-Configuração do Banco de Dados
+🛠️ Configuração do Banco de Dados
 
-1. Configurando o Docker
+Configurando o Docker
 
 O projeto utiliza Docker para rodar o banco de dados PostgreSQL. No arquivo docker-compose.yml, temos a seguinte configuração:
 
@@ -70,7 +71,7 @@ services:
     ports:
       - "5000:5000"
       - "5001:5001"
-  
+
   bookstore.database:
     image: postgres:latest
     container_name: bookstore.data
@@ -81,9 +82,9 @@ services:
     volumes:
       - ./.containers/bookstore-db:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - "5432:5432"
 
-2. Configurando a String de Conexão
+Configurando a String de Conexão
 
 Abra o arquivo appsettings.json e adicione:
 
@@ -91,16 +92,16 @@ Abra o arquivo appsettings.json e adicione:
   "WebApiDatabase": "UserID=postgres;Password=postgres;Host=localhost;Port=5432;Database=bookstore"
 }
 
-3. Registrando o Banco no Program.cs
+Registrando o Banco no Program.cs
 
 No arquivo Program.cs, registre o contexto do banco de dados:
 
-builder.Services.AddDbContext<ApplicationDBContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase"),
-    x => x.MigrationsAssembly("BookStore.API"))
+        x => x.MigrationsAssembly("BookStore.API"))
     .EnableSensitiveDataLogging());
 
-Executando o Projeto
+▶️ Executando o Projeto
 
 No terminal, suba os containers com Docker:
 
@@ -110,6 +111,10 @@ No Visual Studio 2022, pressione F5 para rodar a API.
 
 Acesse http://localhost:5000/swagger para testar os endpoints.
 
-📌 Observação: Certifique-se de que o Docker Desktop está instalado e rodando antes de iniciar a aplicação.
+⚠️ Observação
 
-🔗 Dúvidas ou sugestões? Entre em contato! 😊
+Certifique-se de que o Docker Desktop está instalado e rodando antes de iniciar a aplicação.
+
+📞 Dúvidas ou Sugestões?
+
+Entre em contato! 😊
